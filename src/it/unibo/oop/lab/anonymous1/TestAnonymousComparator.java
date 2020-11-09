@@ -93,7 +93,7 @@ public final class TestAnonymousComparator {
 //		}
 //	};)
         
-        denzelUsers.sort(new Comparator<User>() {
+        denzelUsers.sort(new Comparator<>() {
         	public int compare(final User a, final User b) {
         		return a.getAge()-b.getAge();
         	}
@@ -136,8 +136,6 @@ public final class TestAnonymousComparator {
         		return b.getAge()-a.getAge();
         	}
 		});
-        
-        
         
         /*rossiUsers.sort(new Comparator<User>() {
         	public int compare(final User a, final User b) {
