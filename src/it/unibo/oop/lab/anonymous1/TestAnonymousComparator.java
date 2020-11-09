@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.anonymous1;
 
 import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUser;
@@ -20,7 +21,19 @@ import it.unibo.oop.lab.socialnetwork.User;
  * 
  */
 public final class TestAnonymousComparator {
-
+	
+//	 ArrayList<User> list1 = new ArrayList<>(new Comparator<User>() {
+//		public int compare(final User a, final User b) {
+//			return a-b;
+//		}
+//	});
+//	
+//	ArrayList<User> list2 = new ArrayList<>(new Comparator<User>() {
+//		public int compare(final User a, final User b) {
+//			return b-a;
+//		}
+//	});
+//
     private TestAnonymousComparator() { }
 
     /**
@@ -74,7 +87,19 @@ public final class TestAnonymousComparator {
          * 
          * REFER TO LESSON 13-Advanced-Mechanisms.pdf, slide 41
          */
-        // TODO
+//        Set<User> orderedDenzelUsers = new TreeSet<User>(new Comparator<User>() {
+//		public int compare(final User a, final User b) {
+//			return a.getAge()-b.getAge();
+//		}
+//	};)
+        
+        denzelUsers.sort(new Comparator<User>() {
+        	public int compare(final User a, final User b) {
+        		return a.getAge()-b.getAge();
+        	}
+		});
+        
+        
         /*
          * expected Result
          */
@@ -105,7 +130,21 @@ public final class TestAnonymousComparator {
          * NOTE: in order to sort a list think about a method of the utility
          * class Collections
          */
-        // TODO
+        
+        Collections.sort(rossiUsers,new Comparator<User>() {
+        	public int compare(final User a, final User b) {
+        		return b.getAge()-a.getAge();
+        	}
+		});
+        
+        
+        
+        /*rossiUsers.sort(new Comparator<User>() {
+        	public int compare(final User a, final User b) {
+        		return b.getAge()-a.getAge();
+        	}
+		});*/
+
         /*
          * expected Result
          */
