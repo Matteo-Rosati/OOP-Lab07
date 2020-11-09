@@ -3,6 +3,11 @@
  */
 package it.unibo.oop.lab.enum2;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import it.unibo.oop.lab.enum2.Sport;
+import it.unibo.oop.lab.enum2.Sport.Place;
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUserImpl;
 import it.unibo.oop.lab.socialnetwork.User;
 
@@ -30,6 +35,8 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * 
      * add a field to keep track of the set of sports followed/done by a user
      */
+	
+	private final Set<Sport> sports = new HashSet<>();
 
     /**
      * Builds a new {@link Sport2SocialNetworkUserImpl}.
@@ -75,7 +82,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      *            a sport followed/done by the user
      */
     public void addSport(final Sport sport) {
-
+    	sports.add(sport);
     }
 
     /**
@@ -87,7 +94,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * @return true if user likes sport s
      */
     public boolean likesSport(final Sport s) {
-        return false;
+    	return sports.contains(s);
     }
 
     /*
@@ -114,4 +121,30 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
     /*
      * public Set<Sport> getSportPracticedInPlace(Place p) { return null; }
      */
+    
+    public Set<Sport> getIndividualSports() {
+    	
+    	Set<Sport> IndividualSports = new HashSet<>();
+    	
+    	for(Sport p : sports) {
+    		if(p.isIndividualSport()) {
+    			IndividualSports.add(p);
+    		}	
+    	}
+    	return IndividualSports;
+    }
+    
+    public Set<Sport> getSportPracticedInPlace(Place p) {
+    	
+    	Set<Sport> SportPracticedInPlace = new HashSet<>();
+    	
+    	for(Sport a : sports) {
+    		if(a.getPlace() == p) {
+    			SportPracticedInPlace.add(a);
+    		}	
+    	}
+    	return SportPracticedInPlace;
+    }
+    
+    
 }
